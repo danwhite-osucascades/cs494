@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p {
+                font-size: 30pt;
+            }
+            .shared-styles{
+                background-color: blueviolet;
+                padding: 10pt;
+                margin: 5pt;
+                height: 50;
+                width: 200;
+                color: white;
+
+            }
+
+            .other-class{
+                font-weight:bold;
+            }
+
+            #myDiv1{
+                font-size: 20pt;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #myDiv2{
+                font-size: 25pt;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+        <script>
+            counter = 0
+            function handleClick(){
+                counter++;
+                document.getElementById("myDiv2").innerHTML = "You clicked " + counter + " number of times!";
+            }
+        </script>
+    </head>
+    <body>
+        <p>Hello World</p>
+        <div class="shared-styles" id="myDiv1">
+            My Div 1
+        </div>
+        <div class="shared-styles other-class" id="myDiv2">
+            My Div 2
+        </div>
+        <button onclick="handleClick()">My Button</button>
+    </body>
+</html>
