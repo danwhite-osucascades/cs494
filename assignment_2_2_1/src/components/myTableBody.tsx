@@ -1,13 +1,15 @@
 import { TableBody } from "@mui/material";
 import MyBodyRow from "./myBodyRow";
+import { star } from "./myBodyRow"
 
-export default function MyTableBody(props:{data: string[][]} ){
+
+export default function MyTableBody(props:{data: star[]} ){
 
   return(
     <TableBody>
-        {props.data.map((data: string[], i: number) => (
-            <MyBodyRow key={i} data={data}/>
-        ))}
+          {props.data.map((data: star) => (
+            <MyBodyRow data={data}/>
+          ))}
     </TableBody>
   )
 }

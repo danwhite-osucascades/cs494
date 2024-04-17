@@ -1,3 +1,4 @@
+"use client"
 import { styled, TableCell, tableCellClasses, TableRow } from "@mui/material";
 
 export const StyledTableCell = styled(TableCell)(() => ({
