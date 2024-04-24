@@ -5,19 +5,21 @@ import { tableCellClasses } from "@mui/material/TableCell";
 
 export const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`] : {
-    backgroundColor: "black",
+    backgroundColor: "#000",
     color: "white",
-    fontSize: 16,
-    textAlign: "center"
+    fontSize: 14,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontVariant: "small-caps"
   },
   [`&.${tableCellClasses.body}`] : {
-    fontSize: 14,
-    textAlign: "center"
+    fontSize: 10,
+    textAlign: "center",
   },
 }));
 
 export const StyledTableRow = styled(TableRow)(()=>({
     "&:nth-of-type(even)":{
-      backgroundColor: "#ccc"
+      backgroundColor: "#ddd"
     }
   }));

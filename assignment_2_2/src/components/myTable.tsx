@@ -1,18 +1,25 @@
 'use client';
 
-import { Table, TableHead, TableBody, TableRow, TableCell} from "@mui/material";
+import { TableContainer, Table } from "@mui/material";
 
 import MyTableHead from "./myTableHead";
 import MyTableBody from "./myTableBody";
 
-export default function MyTable(props: {headers: string[], data:  {title: string, year: string, director: string, genre: string[], score: string}[]}){
+export default function MyTable(props: {headers: string[], data: {title: string, 
+    release_year: number,
+    director: string,
+    genre: string[],
+    starring_actors: string[],
+    rotten_tomatoes_score: number}[]}){
     
-      
     return (
-        <Table>
-            <MyTableHead headers={props.headers}/>
-            <MyTableBody data={props.data} />
-        </Table>
+        <TableContainer>
+            <Table>
+                <MyTableHead headers={props.headers}/>
+                <MyTableBody data={props.data} />
+            </Table>
+        </TableContainer>
+
     )
 
 }
