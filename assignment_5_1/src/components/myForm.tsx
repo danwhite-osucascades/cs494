@@ -9,7 +9,8 @@ import {
         FormControl, 
         InputLabel, 
         Select, 
-        MenuItem 
+        MenuItem,
+        Rating
         } from '@mui/material';
 
 
@@ -19,6 +20,12 @@ export default function MyForm(props: {addEntry: Function}){
     const [name, setName] = useState<string>("");
     const [language, setLanguage] = useState<string>(languages[0]);
     const [comment, setComment] = useState<string>("");
+    const [rating, setRating] = useState<number>(0);
+
+    function handleRatingChange(event: React.SyntheticEvent, value: number | null){
+        setRating(value ? value : 0);
+        
+    }
 
     function handleNameChange(event: ChangeEvent<HTMLInputElement>){
         setName(event.target.value);
@@ -38,8 +45,12 @@ export default function MyForm(props: {addEntry: Function}){
         props.addEntry({
             name: name,
             language: language,
-            comment: comment
+            comment: comment,
+            rating: rating
         });
+        // setName("");
+        // setLanguage(languages[0]);
+        // setComment("");
     }
 
     // useEffect(()=>{
@@ -81,6 +92,11 @@ export default function MyForm(props: {addEntry: Function}){
                 value={comment}
                 onChange={handleCommentChange}
                 />
+                <Rating
+                    name="rating"
+                    value={rating}
+                    onChange={handleRatingChange}
+                    />
             <Button  id="testId" value="testValue" variant="contained" onClick={handleClick}>
                 Submit
             </Button>
