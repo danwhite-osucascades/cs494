@@ -2,17 +2,11 @@
 
 import { useState, useEffect } from 'react';
 
-import { Button, 
-      TextField, 
-      Typography,
-      FormControl,
-      InputLabel,
-      Select,
-      MenuItem
- } from "@mui/material";
-
 import { Pokemon } from '../types/Pokemon';
 import { PokemonDetail } from '../types/PokemonDetail';
+
+import SelectForm from '../components/selectForm';
+import PokemonCard from '@/components/pokemonCard';
 
 export default function Home() {
 
@@ -20,16 +14,10 @@ export default function Home() {
   // and get the data back as a json
 
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
-  const [selectedPokemon, setSelectedPokemon] = useState<string>("");
+  
   const [selectedPokemonUrl, setSelectedPokemonUrl] = useState<string>("");
   const [pokemonDetail, setPokemonDetail] = useState<PokemonDetail | null >(null);
 
-  useEffect(() => {
-    if (pokemon.length > 0){
-      setSelectedPokemon(pokemon[0].name);
-    }
-    
-  }, [pokemon]);
 
   useEffect(() => {
     console.log(pokemonDetail);
@@ -55,25 +43,18 @@ export default function Home() {
 
   return (
     <main>
-     <FormControl fullWidth>
-        <InputLabel id="pokemon-select-label">Pokemon</InputLabel>
-        <Select
-          labelId="pokemon-select-label"
-          id="pokemon-select"
-          value={selectedPokemon}
-          label="Pokemon"
-          onChange={(event)=>{
-            setSelectedPokemon(event.target.value);
-            setSelectedPokemonUrl(pokemon.filter((obj)=>obj.name == event.target.value)[0].url);
-          }}
-        > 
-        {pokemon.map((data: Pokemon, i: number)=>(
-          <MenuItem key={i} value={data.name}>{data.name}</MenuItem>
-        ))}
-          
-        </Select>
-      </FormControl>
-
+      {
+        pokemon.length > 0 ?
+        <SelectForm pokemon={pokemon} setSelectedPokemonUrl={setSelectedPokemonUrl}/>
+        : 
+        <div/>
+      }
+       {
+        pokemonDetail ?
+          <PokemonCard pokemonDetail={pokemonDetail}/>
+            :
+            <div />
+          }
   </main>
   );
 }
