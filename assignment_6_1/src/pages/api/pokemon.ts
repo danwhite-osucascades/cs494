@@ -10,8 +10,8 @@ export default async function handler(
     const pokemonArray: Pokemon[] = [];
     const r = await fetch("https://pokeapi.co/api/v2/pokemon");
     
+    
     const jsonData = await r.json();
-
     for (let i = 0; i < jsonData.results.length; i++){
       pokemonArray.push(jsonData.results[i] as Pokemon);
     }
