@@ -68,7 +68,7 @@ export default function Home() {
           }}
         > 
         {pokemon.map((data: Pokemon, i: number)=>(
-          <MenuItem key={i} data-url={data.url} value={data.name}>{data.name}</MenuItem>
+          <MenuItem key={i} value={data.name}>{data.name}</MenuItem>
         ))}
           
         </Select>
