@@ -1,5 +1,7 @@
 import { Animal } from "@/types/animal";
 
+import { delay } from "./delay";
+
 const dogImageApi = "https://dog.ceo/api/breeds/image/random";
 const catImageApi = "https://api.thecatapi.com/v1/images/search";
 const nameApi = "https://randomuser.me/api/";
@@ -18,10 +20,30 @@ export async function getDog(){
         name: dogName,
         gender: dogGender,
         type: "dog",
-        url: dogImageUrl
+        url: dogImageUrl,
+        favorited: false
     }
 
     return dog;
+
+}
+
+
+export async function getAnimals(catCount: number, dogCount: number){
+
+    const animals: Animal[] = [];
+
+    for (let i = 0; i < dogCount; i++){
+        animals.push(await getDog());
+        await delay(100);
+    }
+
+    for (let i = 0; i < catCount; i++){
+        animals.push(await getCat());
+        await delay(100);
+    }
+
+    return animals;
 
 }
 
@@ -40,7 +62,8 @@ export async function getCat(){
         name: catName,
         gender: catGender,
         type: "cat",
-        url: catImageUrl
+        url: catImageUrl,
+        favorited: false
     }
 
     return cat;
