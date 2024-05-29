@@ -5,7 +5,6 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { Animal } from '@/types/animal';
 
 import { getAnimals } from '@/assets/getPet';
-import { randomInt } from 'crypto';
 
 import { db } from '../app/firebase';
 import { getDoc, setDoc, doc } from 'firebase/firestore';
